@@ -29,13 +29,17 @@ export const rootReducer = (
   }
   if (action.type === END_STROKE) {
     if (!state.currentStroke.points.length) {
-      return state
+      return state;
     }
     return {
       ...state,
       currentStroke: { ...state.currentStroke, points: [] },
-      strokes: [...state.strokes, state.currentStroke]
-    }
+      strokes: [...state.strokes, state.currentStroke],
+    };
   }
   return state;
 };
+
+export const currentStrokeSelector = (state: RootState) => {
+  return state.currentStroke
+}

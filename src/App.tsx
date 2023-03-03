@@ -1,5 +1,9 @@
 import React, { useRef, useEffect } from "react";
-import { clearCanvas, setCanvasSize } from "./utils/canvasUtils";
+import { useDispatch, useSelector } from "react-redux";
+import { beginStroke, endStroke, updateStroke } from "./actions";
+import { currentStrokeSelector } from "./reducers/rootReducer";
+import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
+
 const WIDTH = 1024;
 const HEIGHT = 768;
 
@@ -12,6 +16,14 @@ function App() {
       context: canvas?.getContext("2d"),
     };
   };
+
+  const currentStroke = useSelector(currentStrokeSelector);
+
+  // !! number to bool
+  const isDrawing = !!currentStroke.points.length;
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const { canvas, context } = getCanvasWithContext();
 
@@ -28,6 +40,38 @@ function App() {
 
     clearCanvas(canvas);
   }, []);
+  useEffect(() => {
+    const { context } = getCanvasWithContext();
+
+    if (!context) {
+      return;
+    }
+
+    requestAnimationFrame(() =>
+      drawStroke(context, currentStroke.points, currentStroke.color)
+    );
+  });
+
+  const startDrawing = ({
+    nativeEvent,
+  }: React.MouseEvent<HTMLCanvasElement>) => {
+    const { offsetX, offsetY } = nativeEvent;
+    dispatch(beginStroke(offsetX, offsetY));
+  };
+
+  const draw = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+    if (!isDrawing) {
+      return;
+    }
+    const { offsetX, offsetY } = nativeEvent;
+    dispatch(updateStroke(offsetX, offsetY));
+  };
+  const endDrawing = () => {
+    if (isDrawing) {
+      dispatch(endStroke())
+    }
+  };
+
   return (
     <div className="window">
       <div className="title-bar">
@@ -36,7 +80,13 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
-      <canvas ref={canvasRef} />
+      <canvas
+        onMouseDown={startDrawing}
+        onMouseUp={endDrawing}
+        onMouseOut={endDrawing}
+        onMouseMove={draw}
+        ref={canvasRef}
+      />
     </div>
   );
 }
