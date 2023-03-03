@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { beginStroke, endStroke, updateStroke } from "./actions";
+import { ColorPanel } from "./components/ColorPanel";
 import { currentStrokeSelector } from "./reducers/rootReducer";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 
@@ -66,9 +67,10 @@ function App() {
     const { offsetX, offsetY } = nativeEvent;
     dispatch(updateStroke(offsetX, offsetY));
   };
+
   const endDrawing = () => {
     if (isDrawing) {
-      dispatch(endStroke())
+      dispatch(endStroke());
     }
   };
 
@@ -80,6 +82,7 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
+      <ColorPanel />
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={endDrawing}
