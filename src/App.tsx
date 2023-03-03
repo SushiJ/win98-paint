@@ -2,7 +2,12 @@ import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { beginStroke, endStroke, updateStroke } from "./actions";
 import { ColorPanel } from "./components/ColorPanel";
-import { currentStrokeSelector } from "./reducers/rootReducer";
+import { EditPanel } from "./components/EditPanel";
+import {
+  currentStrokeSelector,
+  historyIndexSelector,
+  strokesSelector,
+} from "./reducers/rootReducer";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 
 const WIDTH = 1024;
@@ -10,6 +15,12 @@ const HEIGHT = 768;
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const dispatch = useDispatch();
+  const currentStroke = useSelector(currentStrokeSelector);
+  const historyIndex = useSelector(historyIndexSelector);
+  const strokes = useSelector(strokesSelector);
+  // !! number to bool
+  const isDrawing = !!currentStroke.points.length;
 
   const getCanvasWithContext = (canvas = canvasRef.current) => {
     return {
@@ -17,13 +28,6 @@ function App() {
       context: canvas?.getContext("2d"),
     };
   };
-
-  const currentStroke = useSelector(currentStrokeSelector);
-
-  // !! number to bool
-  const isDrawing = !!currentStroke.points.length;
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const { canvas, context } = getCanvasWithContext();
@@ -41,6 +45,7 @@ function App() {
 
     clearCanvas(canvas);
   }, []);
+
   useEffect(() => {
     const { context } = getCanvasWithContext();
 
@@ -51,7 +56,23 @@ function App() {
     requestAnimationFrame(() =>
       drawStroke(context, currentStroke.points, currentStroke.color)
     );
-  });
+  }, [currentStroke]);
+
+  useEffect(() => {
+    const { canvas, context } = getCanvasWithContext();
+
+    if (!canvas || !context) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      clearCanvas(canvas);
+
+      strokes.slice(0, strokes.length - historyIndex).forEach((stroke) => {
+        drawStroke(context, stroke.points, stroke.color);
+      });
+    });
+  }, [historyIndex]);
 
   const startDrawing = ({
     nativeEvent,
@@ -82,6 +103,7 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
+      <EditPanel />
       <ColorPanel />
       <canvas
         onMouseDown={startDrawing}

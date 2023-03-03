@@ -43,7 +43,7 @@ export const ColorPanel = () => {
       <div className="title-bar">
         <p className="title-bar-text">Colors</p>
       </div>
-      <div className="colors">
+      <div className="window-body colors">
         {COLORS.map((color: string) => (
           <div
             key={color}
