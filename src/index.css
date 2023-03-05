@@ -1,4 +1,4 @@
-html{
+html {
   margin: 0;
   overflow-x: hidden;
 }
@@ -28,7 +28,7 @@ canvas {
 
 .colors-panel {
   position: fixed;
-  bottom: 40px;
+  bottom: 15%;
   left: 50%;
   transform: translate3d(-50%, 0, 0);
   z-index: 10;
@@ -36,7 +36,14 @@ canvas {
 
 .edit {
   position: fixed;
-  bottom: 40px;
+  bottom: 18.5%;
   left: 30px;
   z-index: 10;
+}
+
+.file {
+  position: fixed;
+  bottom: 40px;
+  right: 20%;
+  z-index: 0;
 }

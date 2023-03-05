@@ -2,11 +2,13 @@ lockfileVersion: 5.4
 
 specifiers:
   '@redux-devtools/extension': ^3.2.5
+  '@types/file-saver': ^2.0.5
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@types/react-redux': ^7.1.25
   '@types/redux-logger': ^3.0.9
   '@vitejs/plugin-react': ^3.1.0
+  file-saver: ^2.0.5
   react: ^18.2.0
   react-dom: ^18.2.0
   react-redux: ^8.0.5
@@ -17,6 +19,7 @@ specifiers:
   xp.css: ^0.2.6
 
 dependencies:
+  file-saver: 2.0.5
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.0.5_ctrls2ti7t7iutxbwkm5ipogyy
@@ -25,6 +28,7 @@ dependencies:
 
 devDependencies:
   '@redux-devtools/extension': 3.2.5_redux@4.2.1
+  '@types/file-saver': 2.0.5
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@types/react-redux': 7.1.25
@@ -516,6 +520,10 @@ packages:
       redux: 4.2.1
     dev: true
 
+  /@types/file-saver/2.0.5:
+    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
+    dev: true
+
   /@types/hoist-non-react-statics/3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
@@ -682,6 +690,10 @@ packages:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
     dev: true
+
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
+    dev: false
 
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
