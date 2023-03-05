@@ -5,12 +5,15 @@ import { getCanvasImage } from "../utils/canvasUtils";
 export const FilePanel = () => {
   const canvasRef = useCanvas();
 
-  const exportToFile = async () => {
-    const file = await getCanvasImage(canvasRef.current);
-    if (!file) {
-      return;
-    }
-    saveAs(file, "drawing.png");
+  const exportToFile = () => {
+    getCanvasImage(canvasRef.current)
+      .then((file) => {
+        if (!file) {
+          return;
+        }
+        saveAs(file, "drawing.png");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="window file">

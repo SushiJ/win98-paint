@@ -45,8 +45,14 @@ export const getCanvasImage = (
 ): Promise<null | Blob> => {
   return new Promise((resolve, reject) => {
     if (!canvas) {
-      return reject(null);
+      return reject("Canvas Error, Can't find the instance of canvas");
     }
-    canvas.toBlob(resolve);
+    canvas.toBlob((blob) => {
+      if (blob?.size === 58634) {
+        reject("No image found, Please draw something to export");
+      } else {
+        resolve(blob);
+      }
+    });
   });
 };
