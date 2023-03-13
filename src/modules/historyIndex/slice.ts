@@ -10,7 +10,7 @@ const historyIndexSlice = createSlice({
       return Math.min(state + 1, action.payload);
     },
     redo: (state) => {
-      return Math.min(state - 1, 0);
+      return Math.max(state - 1, 0);
     },
   },
   extraReducers: (builder) => {
