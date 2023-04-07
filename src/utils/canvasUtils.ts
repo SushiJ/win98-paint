@@ -49,7 +49,7 @@ export const getCanvasImage = (
     }
     canvas.toBlob((blob) => {
       if (blob?.size === 58634) {
-        reject("No image found, Please draw something to export");
+        reject("Canvas is empty, Please draw something to export");
       } else {
         resolve(blob);
       }

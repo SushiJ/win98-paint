@@ -10,6 +10,7 @@ import { historyIndexSelector } from "./modules/historyIndex/slice";
 import { strokesSelector } from "./modules/strokes/slice";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 import { useCanvas } from "./CanvasContext";
+import { Toaster } from "react-hot-toast";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -97,16 +98,13 @@ function App() {
   };
 
   return (
-    <div className="window">
+    <div className="window container">
       <div className="title-bar">
         <div className="title-bar-text">98 Paint</div>
         <div className="title-bar-controls">
           <button aria-label="Close" />
         </div>
       </div>
-      <EditPanel />
-      <ColorPanel />
-      <FilePanel />
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={endDrawing}
@@ -114,6 +112,14 @@ function App() {
         onMouseMove={draw}
         ref={canvasRef}
       />
+      <div className="controls">
+        <ColorPanel />
+        <div className="tools">
+          <EditPanel />
+          <FilePanel />
+        </div>
+      </div>
+      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 }
