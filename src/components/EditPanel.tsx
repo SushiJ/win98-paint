@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { redo, undo } from "../modules/historyIndex/slice";
 import { strokesLengthSelector } from "../modules/strokes/slice";
 

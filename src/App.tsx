@@ -11,6 +11,7 @@ import { strokesSelector } from "./modules/strokes/slice";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 import { useCanvas } from "./CanvasContext";
 import { Toaster } from "react-hot-toast";
+import { SidePanel } from "./components/SidePanel";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
@@ -56,7 +57,7 @@ function App() {
     }
 
     requestAnimationFrame(() =>
-      drawStroke(context, currentStroke.points, currentStroke.color)
+      drawStroke(context, currentStroke.points, currentStroke.color),
     );
   }, [currentStroke]);
 
@@ -98,28 +99,24 @@ function App() {
   };
 
   return (
-    <div className="window container">
+    <div className="window">
       <div className="title-bar">
         <div className="title-bar-text">98 Paint</div>
         <div className="title-bar-controls">
           <button aria-label="Close" />
         </div>
       </div>
-      <canvas
-        onMouseDown={startDrawing}
-        onMouseUp={endDrawing}
-        onMouseOut={endDrawing}
-        onMouseMove={draw}
-        ref={canvasRef}
-      />
-      <div className="controls">
-        <ColorPanel />
-        <div className="tools">
-          <EditPanel />
-          <FilePanel />
-        </div>
+      <div className="container">
+        <canvas
+          onMouseDown={startDrawing}
+          onMouseUp={endDrawing}
+          onMouseOut={endDrawing}
+          onMouseMove={draw}
+          ref={canvasRef}
+        />
+        <SidePanel />
+        <Toaster position="bottom-center" reverseOrder={false} />
       </div>
-      <Toaster position="bottom-center" reverseOrder={false} />
     </div>
   );
 }
