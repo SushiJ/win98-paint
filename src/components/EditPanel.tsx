@@ -6,10 +6,7 @@ export const EditPanel = () => {
   const dispatch = useDispatch();
   const undoLimit = useSelector(strokesLengthSelector);
   return (
-    <div className="window edit">
-      <div className="title-bar">
-        <div className="title-bar-text">Edit</div>
-      </div>
+    <div className="edit">
       <div className="window-body">
         <div className="field-row">
           <button onClick={() => dispatch(undo(undoLimit))} className="button">

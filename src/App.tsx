@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ColorPanel } from "./components/ColorPanel";
-import { EditPanel } from "./components/EditPanel";
-import { FilePanel } from "./components/FilePanel";
 import { beginStroke, updateStroke } from "./modules/currentStroke/slice";
 import { endStroke } from "./modules/sharedActions";
 import { currentStrokeSelector } from "./modules/currentStroke/slice";
@@ -13,8 +10,8 @@ import { useCanvas } from "./CanvasContext";
 import { Toaster } from "react-hot-toast";
 import { SidePanel } from "./components/SidePanel";
 
-const WIDTH = 1024;
-const HEIGHT = 768;
+const WIDTH = 2000;
+const HEIGHT = 2000;
 
 function App() {
   const canvasRef = useCanvas();
@@ -99,22 +96,26 @@ function App() {
   };
 
   return (
-    <div className="window">
-      <div className="title-bar">
-        <div className="title-bar-text">98 Paint</div>
-        <div className="title-bar-controls">
-          <button aria-label="Close" />
+    <div className="main-container">
+      <div className="window">
+        <div className="title-bar">
+          <div className="title-bar-text">98 Paint</div>
+          <div className="title-bar-controls">
+            <button aria-label="Close" />
+          </div>
         </div>
-      </div>
-      <div className="container">
-        <canvas
-          onMouseDown={startDrawing}
-          onMouseUp={endDrawing}
-          onMouseOut={endDrawing}
-          onMouseMove={draw}
-          ref={canvasRef}
-        />
-        <SidePanel />
+        <div className="window-body container">
+          <SidePanel />
+          <div className="canvas">
+            <canvas
+              onMouseDown={startDrawing}
+              onMouseUp={endDrawing}
+              onMouseOut={endDrawing}
+              onMouseMove={draw}
+              ref={canvasRef}
+            />
+          </div>
+        </div>
         <Toaster position="bottom-center" reverseOrder={false} />
       </div>
     </div>

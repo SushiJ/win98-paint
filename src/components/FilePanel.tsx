@@ -36,15 +36,12 @@ export const FilePanel = () => {
             primary: "#ff0081",
             secondary: "#fdffff",
           },
-        })
+        }),
       );
   };
 
   return (
-    <div className="window file">
-      <div className="title-bar">
-        <div className="title-bar-text">File </div>
-      </div>
+    <div className="file">
       <div className="window-body">
         <div className="field-row">
           <button className="save-button" onClick={exportToFile}>
