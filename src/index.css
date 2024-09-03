@@ -15,7 +15,7 @@ canvas {
 }
 
 .canvas {
-  max-height: 1080px;
+  max-height: 920px;
   max-width: 1920px;
   overflow: scroll;
 }
