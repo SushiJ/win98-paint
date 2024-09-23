@@ -14,13 +14,20 @@ canvas {
     auto;
 }
 
+.main-container {
+  height: 100vh;
+}
+
 .canvas {
-  max-height: 920px;
   max-width: 1920px;
   overflow: scroll;
 }
 
 .container {
+  height: 100%;
+}
+
+.canvas-container {
   display: flex;
 }
 
