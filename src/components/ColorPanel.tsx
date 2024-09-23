@@ -40,9 +40,6 @@ export const ColorPanel = () => {
   };
   return (
     <div className="colors-panel">
-      {/* <div className="title-bar"> */}
-      {/*   <p className="title-bar-text">Colors</p> */}
-      {/* </div> */}
       <div className="window-body colors">
         {COLORS.map((color: string) => (
           <div
