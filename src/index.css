@@ -5,7 +5,6 @@ html {
 
 body {
   margin: 0;
-  /* overflow: hidden; */
 }
 
 canvas {
@@ -64,8 +63,6 @@ canvas {
 
 .controls {
   max-width: min-content;
-  /* margin: auto; */
-  /* padding: 1rem; */
 }
 
 .tools {

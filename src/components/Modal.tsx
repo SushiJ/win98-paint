@@ -20,8 +20,6 @@ export function Modal({ children }: { children: ReactNode }) {
         className="window"
         style={{
           alignSelf: "center",
-          // width: "min-content",
-          // height: "min-content",
           padding: "0.5rem",
         }}
       >
