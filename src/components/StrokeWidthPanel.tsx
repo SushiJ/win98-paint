@@ -16,20 +16,47 @@ export const StrokeWidthPanel = () => {
   };
 
   return (
-    <div className="">
-      <div className="window-body">
+    <div>
+      <div style={{
+        display: "flex",
+        flexWrap: "wrap",
+        translate: "9%",
+        gap: "1px"
+      }} >
         {WIDTH.map((w: number) => (
-          <div
-            key={w}
-            onClick={() => {
-              onWidthChange(w);
-            }}
-            className="color"
-          >
-            <pre>{w}</pre>
-          </div>
+          <RenderSquare width={w} key={w} onClick={() => onWidthChange(w)} />
         ))}
       </div>
     </div>
   );
 };
+
+function RenderSquare(props: {
+  width: number
+  onClick: () => void;
+}) {
+  return (
+    <div style={
+      {
+        border: "1px solid black",
+        backgroundColor: "white",
+        padding: ".25rem",
+        width: "20px",
+        height: "20px",
+        display: "grid",
+        placeItems: "center",
+        cursor: "pointer"
+      }
+    }
+      onClick={props.onClick}
+    >
+      <div
+        style={{
+          height: props.width,
+          width: props.width,
+          backgroundColor: "black",
+          borderRadius: "100%",
+        }} />
+    </div>
+  )
+}
