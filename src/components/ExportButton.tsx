@@ -57,7 +57,7 @@ export const ExportButton = () => {
         return;
       }
       reader.readAsDataURL(blob);
-      reader.onloadend = function () {
+      reader.onloadend = function() {
         const ImageBase64 = reader.result;
         const a = document.createElement("a");
         if (!ImageBase64) return;
