@@ -5,6 +5,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState: RootState["currentStroke"] = {
   points: [],
   color: "#000",
+  width: 5,
 };
 const currentStrokeSlice = createSlice({
   name: "currentStroke",
@@ -19,6 +20,9 @@ const currentStrokeSlice = createSlice({
     setStrokeColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload;
     },
+    setStrokeWidth: (state, action: PayloadAction<number>) => {
+      state.width = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(endStroke, (state) => {
@@ -26,7 +30,8 @@ const currentStrokeSlice = createSlice({
     });
   },
 });
+
 export const reducer = currentStrokeSlice.reducer;
-export const { beginStroke, updateStroke, setStrokeColor } =
+export const { beginStroke, updateStroke, setStrokeColor, setStrokeWidth } =
   currentStrokeSlice.actions;
 export const currentStrokeSelector = (state: RootState) => state.currentStroke;

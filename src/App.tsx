@@ -56,7 +56,7 @@ function App() {
     }
 
     requestAnimationFrame(() =>
-      drawStroke(context, currentStroke.points, currentStroke.color),
+      drawStroke(context, currentStroke.points, currentStroke.color, currentStroke.width),
     );
   }, [currentStroke]);
 

@@ -6,6 +6,7 @@ export const clearCanvas = (canvas: HTMLCanvasElement) => {
   if (!context) {
     return;
   }
+  context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "white";
   context.fillRect(0, 0, canvas.width, canvas.height);
 };
@@ -25,12 +26,14 @@ export const setCanvasSize = (
 export const drawStroke = (
   context: CanvasRenderingContext2D,
   points: Point[],
-  color: string
+  color: string,
+  width: number = 5
 ) => {
   if (!points.length) {
     return;
   }
   context.strokeStyle = color;
+  context.lineWidth = width;
   context.beginPath();
   context.moveTo(points[0].x, points[0].y);
   points.forEach((point) => {
