@@ -7,7 +7,11 @@ const initialStrokes: RootState["strokes"] = [];
 const strokeSlice = createSlice({
   name: "strokes",
   initialState: initialStrokes,
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      return state = initialStrokes;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(endStroke, (state, action) => {
       const { historyIndex, stroke } = action.payload;
@@ -21,5 +25,6 @@ const strokeSlice = createSlice({
 });
 export const reducer = strokeSlice.reducer;
 
+export const { reset } = strokeSlice.actions;
 export const strokesLengthSelector = (state: RootState) => state.strokes.length;
 export const strokesSelector = (state: RootState) => state.strokes;

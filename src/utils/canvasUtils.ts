@@ -39,20 +39,3 @@ export const drawStroke = (
   });
   context.closePath();
 };
-
-export const getCanvasImage = (
-  canvas: HTMLCanvasElement | null
-): Promise<null | Blob> => {
-  return new Promise((resolve, reject) => {
-    if (!canvas) {
-      return reject("Canvas Error, Can't find the instance of canvas");
-    }
-    canvas.toBlob((blob) => {
-      if (blob?.size === 58634) {
-        reject("Canvas is empty, Please draw something to export");
-      } else {
-        resolve(blob);
-      }
-    });
-  });
-};
