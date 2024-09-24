@@ -42,6 +42,7 @@ export const ExportButton = () => {
       if (!blob) {
         return;
       }
+      console.log(blob.size);
       if (blob.size === MAGIC_NUMBER) {
         toast.error("Nothing to export", {
           style: {
@@ -56,29 +57,29 @@ export const ExportButton = () => {
         });
         return;
       }
-      reader.readAsDataURL(blob);
-      reader.onloadend = function() {
-        const ImageBase64 = reader.result;
-        const a = document.createElement("a");
-        if (!ImageBase64) return;
-        const b64 = ImageBase64.toString().split(";")[1];
-        const image = `data:image/${ext};${b64}`;
-        console.log(image);
-        a.href = image.toString();
-        a.download = `${fileName}`;
-        setTimeout(() => a.click(), 500);
-        toast.success("Exporting...", {
-          style: {
-            border: "1px solid #010081",
-            color: "#008080",
-            fontSize: "12px",
-          },
-          iconTheme: {
-            primary: "#008080",
-            secondary: "#fdffff",
-          },
-        });
-      };
+      // reader.readAsDataURL(blob);
+      // reader.onloadend = function() {
+      //   const ImageBase64 = reader.result;
+      //   const a = document.createElement("a");
+      //   if (!ImageBase64) return;
+      //   const b64 = ImageBase64.toString().split(";")[1];
+      //   const image = `data:image/${ext};${b64}`;
+      //   console.log(image);
+      //   a.href = image.toString();
+      //   a.download = `${fileName}`;
+      //   setTimeout(() => a.click(), 500);
+      //   toast.success("Exporting...", {
+      //     style: {
+      //       border: "1px solid #010081",
+      //       color: "#008080",
+      //       fontSize: "12px",
+      //     },
+      //     iconTheme: {
+      //       primary: "#008080",
+      //       secondary: "#fdffff",
+      //     },
+      //   });
+      // };
     });
   };
 
