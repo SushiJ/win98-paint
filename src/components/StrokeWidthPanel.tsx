@@ -21,7 +21,8 @@ export const StrokeWidthPanel = () => {
         display: "flex",
         flexWrap: "wrap",
         translate: "9%",
-        gap: "1px"
+        gap: "1px",
+        maxWidth: "100px"
       }} >
         {WIDTH.map((w: number) => (
           <RenderSquare width={w} key={w} onClick={() => onWidthChange(w)} />

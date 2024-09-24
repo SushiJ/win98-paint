@@ -1,10 +1,12 @@
 import { useLayoutEffect, useState } from "react";
 const useWindowHeight = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useLayoutEffect(() => {
     const windowSizeHandler = () => {
       setWindowHeight(window.innerHeight);
+      setWindowWidth(window.innerWidth);
     };
     window.addEventListener("resize", windowSizeHandler);
 
@@ -23,7 +25,10 @@ const useWindowHeight = () => {
   //   };
   // }, []);
 
-  return windowHeight;
+  return {
+    windowHeight,
+    windowWidth
+  };
 };
 
 export default useWindowHeight;

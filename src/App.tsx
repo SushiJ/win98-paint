@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { SidePanel } from "./components/SidePanel";
 import useWindowHeight from "./utils/useWindowSize";
 
-const WIDTH = 2000;
+const WIDTH = 3000;
 const HEIGHT = 2000;
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
   const strokes = useSelector(strokesSelector);
   // !! number to bool
   const isDrawing = !!currentStroke.points.length;
-  const windowHeight = useWindowHeight()
+  const { windowHeight, windowWidth } = useWindowHeight()
 
   const getCanvasWithContext = (canvas = canvasRef.current) => {
     return {
@@ -108,7 +108,7 @@ function App() {
         </div>
         <div className="window-body canvas-container">
           <SidePanel />
-          <div className="canvas" style={{ maxHeight: windowHeight - 40 }}>
+          <div className="canvas" style={{ maxHeight: windowHeight - 40, maxWidth: windowWidth }}>
             <canvas
               onMouseDown={startDrawing}
               onMouseUp={endDrawing}
