@@ -9,7 +9,8 @@ type JPEG = "jpeg";
 
 type Extention = PNG | JPG | JPEG;
 
-const MAGIC_NUMBER = 110108; // if blob.size === MAGIC_NUMBER, then the canvas is empty
+// 110108
+const MAGIC_NUMBER = 1185; // if blob.size === MAGIC_NUMBER, then the canvas is empty
 
 export const ExportButton = () => {
   const canvasRef = useCanvas();
@@ -63,7 +64,6 @@ export const ExportButton = () => {
         if (!ImageBase64) return;
         const b64 = ImageBase64.toString().split(";")[1];
         const image = `data:image/${ext};${b64}`;
-        console.log(image);
         a.href = image.toString();
         a.download = `${fileName}`;
         setTimeout(() => a.click(), 500);
