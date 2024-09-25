@@ -16,14 +16,14 @@ export const setCanvasSize = (
   width: number,
   height: number
 ) => {
-  const dpr = window.devicePixelRatio;
-  const rect = canvas.getBoundingClientRect();
+  // const dpr = window.devicePixelRatio;
+  // const rect = canvas.getBoundingClientRect();
 
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
+  canvas.width = width * 2;
+  canvas.height = height * 2;
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
-  canvas.getContext("2d")?.scale(dpr, dpr);
+  canvas.getContext("2d")?.scale(2, 2);
 };
 
 export const drawStroke = (
