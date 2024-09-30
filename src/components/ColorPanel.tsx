@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { currentColorSelected, setPrimaryColor, setSecondaryColor } from "../modules/colors/slice";
 import { setStrokeColor } from "../modules/currentStroke/slice";
 
 const COLORS = [
@@ -34,8 +36,10 @@ const COLORS = [
 
 export const ColorPanel = () => {
   const dispatch = useDispatch();
+  const currentSelected = useSelector(currentColorSelected);
 
   const onColorChange = (color: string) => {
+    currentSelected === "PRIMARY" ? dispatch(setPrimaryColor(color)) : dispatch(setSecondaryColor(color))
     dispatch(setStrokeColor(color));
   };
   return (

@@ -22,7 +22,7 @@ const currentStrokeSlice = createSlice({
     },
     setStrokeWidth: (state, action: PayloadAction<number>) => {
       state.width = action.payload
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(endStroke, (state) => {
