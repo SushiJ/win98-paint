@@ -1,12 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setStrokeWidth } from "../modules/currentStroke/slice";
 
-const WIDTH = [
-  5,
-  10,
-  15,
-  20
-];
+const WIDTH = [5, 10, 15, 20];
 
 export const StrokeWidthPanel = () => {
   const dispatch = useDispatch();
@@ -16,29 +11,25 @@ export const StrokeWidthPanel = () => {
   };
 
   return (
-    <div>
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        translate: "9%",
-        gap: "1px",
-        maxWidth: "100px"
-      }} >
-        {WIDTH.map((w: number) => (
-          <RenderSquare width={w} key={w} onClick={() => onWidthChange(w)} />
-        ))}
-      </div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateRows: "1fr 1fr",
+        gridTemplateColumns: "1fr 1fr",
+        margin: "0.5rem 0",
+      }}
+    >
+      {WIDTH.map((w: number) => (
+        <RenderSquare width={w} key={w} onClick={() => onWidthChange(w)} />
+      ))}
     </div>
   );
 };
 
-function RenderSquare(props: {
-  width: number
-  onClick: () => void;
-}) {
+function RenderSquare(props: { width: number; onClick: () => void }) {
   return (
-    <div style={
-      {
+    <div
+      style={{
         border: "1px solid black",
         backgroundColor: "white",
         padding: ".25rem",
@@ -46,9 +37,8 @@ function RenderSquare(props: {
         height: "20px",
         display: "grid",
         placeItems: "center",
-        cursor: "pointer"
-      }
-    }
+        cursor: "pointer",
+      }}
       onClick={props.onClick}
     >
       <div
@@ -57,7 +47,8 @@ function RenderSquare(props: {
           width: props.width,
           backgroundColor: "black",
           borderRadius: "100%",
-        }} />
+        }}
+      />
     </div>
-  )
+  );
 }

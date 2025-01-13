@@ -8,9 +8,17 @@ export function SidePanel() {
   return (
     <div className="window">
       <div className="window-body">
-        <ColorPanel />
-        <ColorTogglePanel />
-        <StrokeWidthPanel />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <ColorPanel />
+          <ColorTogglePanel />
+          <StrokeWidthPanel />
+        </div>
         <ExportButton />
         <UndoRedoButton />
       </div>

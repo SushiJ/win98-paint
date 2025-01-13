@@ -31,14 +31,19 @@ canvas {
 
 .colors-panel {
   z-index: 10;
-  width: max-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .colors {
   display: flex;
   flex-direction: column;
+  align-content: center;
   flex-wrap: wrap;
   max-height: 336px;
+  width: 100%;
 }
 
 .color {
