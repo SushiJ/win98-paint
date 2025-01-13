@@ -9,6 +9,8 @@ type JPEG = "jpeg";
 
 type Extention = PNG | JPG | JPEG;
 
+
+// 110108
 const MAGIC_NUMBER = 1185; // if blob.size === MAGIC_NUMBER, then the canvas is empty
 
 export const ExportButton = () => {

@@ -71,7 +71,7 @@ function App() {
       clearCanvas(canvas);
 
       strokes.slice(0, strokes.length - historyIndex).forEach((stroke) => {
-        drawStroke(context, stroke.points, stroke.color);
+        drawStroke(context, stroke.points, stroke.color, stroke.width);
       });
     });
   }, [historyIndex]);
